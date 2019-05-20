@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_weight=".33"
+                android:gravity="center"
+                android:text="Voga"
+                android:layout_width="0dp" />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_weight=".33"
+                android:gravity="center"
+                android:text="Drive"
+                android:layout_width="0dp" />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_weight=".33"
+                android:gravity="center"
+                android:text="Freq"
+                android:layout_width="0dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editText_voga"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:layout_weight=".33"
+                android:gravity="center"
+                android:hint="Voga"
+                android:layout_width="0dp" />
+
+            <EditText
+                android:id="@+id/editText_Drive"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:layout_weight=".33"
+                android:gravity="center"
+                android:hint="Drive"
+                android:layout_width="0dp" />
+
+            <EditText
+                android:id="@+id/editText_Freq"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:layout_weight=".33"
+                android:gravity="center"
+                android:hint="Freq"
+                android:layout_width="0dp" />
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_Calcular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calcular"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <com.jjoe64.graphview.GraphView
+            android:id="@+id/graph1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
