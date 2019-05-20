@@ -1,5 +1,6 @@
 package com.example.myapplication.view;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         this.mViewHolder.calcular = (Button) findViewById(R.id.btn_Calcular);
         this.mViewHolder.calcular.setOnClickListener(this);
+        this.mViewHolder.treino = (Button) findViewById(R.id.btn_Treino);
+        this.mViewHolder.treino.setOnClickListener(this);
 
 
     }
@@ -46,6 +49,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
 
         int id = v.getId();
+
+        if (id == R.id.btn_Treino){
+            // Intent intent = new Intent(getApplicationContext(), ParametrosActivity.class);
+            Intent intent = new Intent(this, TreinoActivity.class); // chama outra view
+            startActivity(intent);
+
+        }
 
         if (id == R.id.btn_Calcular) {
 
@@ -141,5 +151,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         EditText freq;
 
         Button calcular;
+        Button treino;
     }
 }
