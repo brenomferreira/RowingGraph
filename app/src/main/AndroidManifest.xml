@@ -13,7 +13,8 @@
             android:name=".view.TreinoActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-        </activity> // Fim Activity Treino
+        </activity>
+        <!--Fim Activity Treino-->
         <activity
             android:name=".view.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -22,7 +23,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> // Fim Activity Main
+        </activity>
+        <!--Fim Activity Main-->
     </application>
 
 </manifest>
