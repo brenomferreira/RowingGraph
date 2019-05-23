@@ -34,8 +34,8 @@ public class MyTask extends AsyncTask<Float, Float, String> {
 
     @Override
     protected String doInBackground(Float... floats) {
-        for (int i = 0; i < floats[0]; i++) {
-            publishProgress((i * 100) / floats[0]);
+        for (int i = 1; i < floats.length; i++) {
+            publishProgress((floats[i] * 100) / floats.length);
             if (isCancelled()) {
                 break;
             }
