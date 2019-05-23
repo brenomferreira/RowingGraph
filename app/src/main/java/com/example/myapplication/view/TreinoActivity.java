@@ -32,7 +32,7 @@ public class TreinoActivity extends AppCompatActivity implements View.OnClickLis
         this.mViewHolder.stop = (Button) findViewById(R.id.btn_stop);
         this.mViewHolder.stop.setOnClickListener(this);
 
-        this.mViewHolder.cadencia = (ProgressBar) findViewById(R.id.seekBar_Cadencia);
+        this.mViewHolder.cadencia = (SeekBar) findViewById(R.id.seekBar_Cadencia);
 
 
 
@@ -55,7 +55,7 @@ public class TreinoActivity extends AppCompatActivity implements View.OnClickLis
 
             this.mViewHolder.start.setText("Running");
             this.task = new MyTask(this, this.mViewHolder.cadencia);
-            this.task.execute(10);
+            this.task.execute(10f);
         }
         if (id == R.id.btn_stop){
             this.mViewHolder.start.setText("Running");
@@ -73,7 +73,7 @@ public class TreinoActivity extends AppCompatActivity implements View.OnClickLis
         Button voltar;
         Button start;
         Button stop;
-        ProgressBar cadencia;
+        SeekBar cadencia;
     }
 
 
