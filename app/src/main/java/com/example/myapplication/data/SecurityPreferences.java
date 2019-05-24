@@ -12,8 +12,8 @@ public class SecurityPreferences {
         this.mSharedPreferences = mContext.getSharedPreferences("Base de dados", Context.MODE_PRIVATE);
     }
 
-   public void getStoredFloat(String key){
-        this.mSharedPreferences.getFloat(key, 0.01f);
+   public float getStoredFloat(String key){
+        return this.mSharedPreferences.getFloat(key, 0.01f);
     }
 
     public void storeFloat(String key, float value){

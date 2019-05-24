@@ -40,6 +40,26 @@ public class TreinoActivity extends AppCompatActivity implements View.OnClickLis
         this.task = new MyTask(this, this.mViewHolder.cadencia);
 
 
+
+        float spDrive = this.mSecurityPreferences.getStoredFloat("spDrive");
+        float fs = this.mSecurityPreferences.getStoredFloat("fs");
+
+        int n = (int) (spDrive + 1f); // tamanho do vetor
+        float vetor[] = new float[n]; // declaração e alocação de espaço para o vetor "v"
+        vetor[0] = fs;
+
+        for (int i = 0; i < spDrive - 1; i++) {
+
+            //     DRIVE(i+1) = floor(50-50*cos(i*2*pi()/fs/Drive_seg/2));
+
+            String txt = "Drive_" + i;
+            vetor[i + 1] = this.mSecurityPreferences.getStoredFloat(txt);
+
+        }
+
+
+
+
     }
 
     @Override
