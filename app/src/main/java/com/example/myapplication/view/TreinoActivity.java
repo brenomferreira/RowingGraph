@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 
@@ -31,6 +32,8 @@ public class TreinoActivity extends AppCompatActivity implements View.OnClickLis
 
         this.mSecurityPreferences = new SecurityPreferences(this);
 
+        this.mViewHolder.posicaoCadeiraValor = (EditText) findViewById(R.id.editText_porcentagem_cadeira);
+
         this.mViewHolder.voltar = (Button) findViewById(R.id.btn_voltar);
         this.mViewHolder.voltar.setOnClickListener(this);
         this.mViewHolder.start = (Button) findViewById(R.id.btn_start);
@@ -39,11 +42,12 @@ public class TreinoActivity extends AppCompatActivity implements View.OnClickLis
         this.mViewHolder.stop.setOnClickListener(this);
 
         this.mViewHolder.cadencia = (SeekBar) findViewById(R.id.seekBar_Cadencia);
+        this.mViewHolder.posicaoCadeira = (SeekBar) findViewById(R.id.seekBar_Cadeira);
 
 
 
         //declarar depois de tudo
-        this.task = new MyTask(this, this.mViewHolder.cadencia);
+        this.task = new MyTask(this, this.mViewHolder.cadencia, this.mViewHolder.posicaoCadeira);
 
 
 
@@ -87,11 +91,15 @@ public class TreinoActivity extends AppCompatActivity implements View.OnClickLis
             // Intent intent = new Intent(getApplicationContext(), ParametrosActivity.class);
             Intent intent = new Intent(this, MainActivity.class); // chama outra view
             startActivity(intent);
+
+            this.mViewHolder.start.setText("Start");
+            this.mViewHolder.cadencia.setProgress(0);
+            this.task.cancel(true);
         }
         if (id == R.id.btn_start) {
 
             this.mViewHolder.start.setText("Running");
-            this.task = new MyTask(this, this.mViewHolder.cadencia);
+            this.task = new MyTask(this, this.mViewHolder.cadencia, this.mViewHolder.posicaoCadeira);
 //
             ArrayList<Float> vetor = new ArrayList<Float>();
 
@@ -122,6 +130,8 @@ public class TreinoActivity extends AppCompatActivity implements View.OnClickLis
         Button start;
         Button stop;
         SeekBar cadencia;
+        SeekBar posicaoCadeira;
+        EditText posicaoCadeiraValor;
     }
 
 

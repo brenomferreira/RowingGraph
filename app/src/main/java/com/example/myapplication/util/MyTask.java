@@ -2,7 +2,6 @@ package com.example.myapplication.util;
 
 import android.os.AsyncTask;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
@@ -15,11 +14,14 @@ public class MyTask extends AsyncTask<ArrayList<Float>, Float, String> {
 
     private WeakReference<TreinoActivity> activityWeakReference;
     SeekBar progressBar;
+    SeekBar posicaoCadeira;
 
     // CONSTRUTOR
-    public MyTask(TreinoActivity activity, SeekBar progressBar) {
+    public MyTask(TreinoActivity activity, SeekBar progressBar, SeekBar posicaoCadeira) {
         activityWeakReference = new WeakReference<TreinoActivity>(activity);
         this.progressBar = progressBar;
+        this.posicaoCadeira = posicaoCadeira;
+
     }// Fim do CONSTRUTOR
 
     @Override
@@ -31,6 +33,7 @@ public class MyTask extends AsyncTask<ArrayList<Float>, Float, String> {
             return;
         }
         progressBar.setVisibility(View.VISIBLE);
+        posicaoCadeira.setVisibility(View.VISIBLE);
     }// Fim onPreExecute
 
     @Override
@@ -44,13 +47,13 @@ public class MyTask extends AsyncTask<ArrayList<Float>, Float, String> {
                     break;
                 }
                 try {
-                    Thread.sleep((long) (1/teste.get(0)*1000));// frequencia de amostragem
+                    Thread.sleep((long) (1 / teste.get(0) * 1000));// frequencia de amostragem
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
-        if (isCancelled())
-            break;
+            if (isCancelled())
+                break;
         }
 
         return "Finished!";
@@ -67,6 +70,12 @@ public class MyTask extends AsyncTask<ArrayList<Float>, Float, String> {
         float temp = values[0];
 
         progressBar.setProgress((int) temp);
+        if (temp < 60)
+            posicaoCadeira.setProgress((int) temp);
+        else
+            posicaoCadeira.setProgress(60);
+
+
     }// Fim onProgressUpdate
 
     @Override

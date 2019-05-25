@@ -85,7 +85,7 @@
             android:id="@+id/btn_Treino"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Trenio"
+            android:text="Treino"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
 

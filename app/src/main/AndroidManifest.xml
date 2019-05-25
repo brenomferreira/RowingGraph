@@ -11,8 +11,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".view.TreinoActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
         <!--Fim Activity Treino-->
         <activity
