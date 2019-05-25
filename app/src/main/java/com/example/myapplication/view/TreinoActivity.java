@@ -20,6 +20,10 @@ public class TreinoActivity extends AppCompatActivity implements View.OnClickLis
     private SecurityPreferences mSecurityPreferences;
     private MyTask task;
 
+    private float fs, spDrive, spRecovery;
+    private ArrayList<Float> vetor = new ArrayList<Float>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,19 +47,30 @@ public class TreinoActivity extends AppCompatActivity implements View.OnClickLis
 
 
 
-        float spDrive = this.mSecurityPreferences.getStoredFloat("spDrive");
-        float fs = this.mSecurityPreferences.getStoredFloat("fs");
+        this.spDrive = this.mSecurityPreferences.getStoredFloat("spDrive");
+        this.spRecovery = this.mSecurityPreferences.getStoredFloat("spRecovery");
+        this.fs = this.mSecurityPreferences.getStoredFloat("fs");
 
-        int n = (int) (spDrive + 1f); // tamanho do vetor
-        float vetor[] = new float[n]; // declaração e alocação de espaço para o vetor "v"
-        vetor[0] = fs;
+        //int n = (int) (spDrive + 1f); // tamanho do vetor
+//        float vetor[] = new float[n]; // declaração e alocação de espaço para o vetor "v"
+//        vetor[0] = fs;
+        this.vetor.add(this.fs);
+        this.vetor.add(this.spDrive + this.spRecovery);
 
-        for (int i = 0; i < spDrive - 1; i++) {
+        for (int i = 0; i < this.spDrive - 1; i++) {
 
             //     DRIVE(i+1) = floor(50-50*cos(i*2*pi()/fs/Drive_seg/2));
 
             String txt = "Drive_" + i;
-            vetor[i + 1] = this.mSecurityPreferences.getStoredFloat(txt);
+            this.vetor.add(this.mSecurityPreferences.getStoredFloat(txt));
+
+        }
+        for (int i = 0; i < this.spRecovery - 1; i++) {
+
+            //     DRIVE(i+1) = floor(50-50*cos(i*2*pi()/fs/Drive_seg/2));
+
+            String txt = "Recov_" + i;
+            this.vetor.add(this.mSecurityPreferences.getStoredFloat(txt));
 
         }
 
@@ -80,19 +95,8 @@ public class TreinoActivity extends AppCompatActivity implements View.OnClickLis
 //
             ArrayList<Float> vetor = new ArrayList<Float>();
 
-            vetor.add(10f);
-            vetor.add(10f);
-            vetor.add(9f);
-            vetor.add(8f);
-            vetor.add(7f);
-            vetor.add(6f);
-            vetor.add(5f);
-            vetor.add(4f);
-            vetor.add(3f);
-            vetor.add(2f);
-            vetor.add(1f);
 
-            this.task.execute(vetor);
+            this.task.execute(this.vetor);
 //
 //
 //
@@ -102,7 +106,7 @@ public class TreinoActivity extends AppCompatActivity implements View.OnClickLis
 
 
         if (id == R.id.btn_stop){
-            this.mViewHolder.start.setText("Running");
+            this.mViewHolder.start.setText("Start");
             this.mViewHolder.cadencia.setProgress(0);
             this.task.cancel(true);
 

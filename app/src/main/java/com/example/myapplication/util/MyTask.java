@@ -36,20 +36,23 @@ public class MyTask extends AsyncTask<ArrayList<Float>, Float, String> {
     @Override
     protected String doInBackground(ArrayList<Float>... floats) {
         ArrayList<Float> teste = floats[0];
+        while (true) {
+            for (int i = 2; i < teste.get(1); i++) { // começa do dois pois os dois primeiros valores sao frequencia e n samples
 
-        for (int i = 1; i < 10; i++)
-        {
-
-            publishProgress((teste.get(i) * 100) / teste.size());
-            if (isCancelled()) {
-                break;
+                publishProgress(teste.get(i));
+                if (isCancelled()) {
+                    break;
+                }
+                try {
+                    Thread.sleep((long) (1/teste.get(0)*1000));// frequencia de amostragem
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        if (isCancelled())
+            break;
         }
+
         return "Finished!";
     }// Fim doInBackground
 
@@ -61,7 +64,7 @@ public class MyTask extends AsyncTask<ArrayList<Float>, Float, String> {
         if (activity == null || activity.isFinishing()) {
             return;
         }
-float temp = values[0];
+        float temp = values[0];
 
         progressBar.setProgress((int) temp);
     }// Fim onProgressUpdate
@@ -78,13 +81,6 @@ float temp = values[0];
         progressBar.setProgress(0);
         progressBar.setVisibility(View.INVISIBLE);
     }// Fim onPostExecute
-
-
-
-
-
-
-
 
 
 }

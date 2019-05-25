@@ -128,6 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
             this.mSecurityPreferences.storeFloat("spDrive", spDrive);
+            this.mSecurityPreferences.storeFloat("spRecovery", spRecovery);
             this.mSecurityPreferences.storeFloat("fs", fs);
 
 
