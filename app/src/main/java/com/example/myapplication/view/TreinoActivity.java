@@ -12,6 +12,8 @@ import com.example.myapplication.R;
 import com.example.myapplication.data.SecurityPreferences;
 import com.example.myapplication.util.MyTask;
 
+import java.util.ArrayList;
+
 public class TreinoActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ViewHolder mViewHolder = new ViewHolder();
@@ -75,8 +77,30 @@ public class TreinoActivity extends AppCompatActivity implements View.OnClickLis
 
             this.mViewHolder.start.setText("Running");
             this.task = new MyTask(this, this.mViewHolder.cadencia);
-            this.task.execute(10f, 10f, 9f, 8f, 7f, 6f, 5f, 4f, 3f, 2f, 1f  );
+//
+            ArrayList<Float> vetor = new ArrayList<Float>();
+
+            vetor.add(10f);
+            vetor.add(10f);
+            vetor.add(9f);
+            vetor.add(8f);
+            vetor.add(7f);
+            vetor.add(6f);
+            vetor.add(5f);
+            vetor.add(4f);
+            vetor.add(3f);
+            vetor.add(2f);
+            vetor.add(1f);
+
+            this.task.execute(vetor);
+//
+//
+//
+//
+//            this.task.execute(10f, 10f, 9f, 8f, 7f, 6f, 5f, 4f, 3f, 2f, 1f  );
         }
+
+
         if (id == R.id.btn_stop){
             this.mViewHolder.start.setText("Running");
             this.mViewHolder.cadencia.setProgress(0);

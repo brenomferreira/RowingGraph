@@ -9,8 +9,9 @@ import android.widget.Toast;
 import com.example.myapplication.view.TreinoActivity;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-public class MyTask extends AsyncTask<Float, Float, String> {
+public class MyTask extends AsyncTask<ArrayList<Float>, Float, String> {
 
     private WeakReference<TreinoActivity> activityWeakReference;
     SeekBar progressBar;
@@ -33,9 +34,13 @@ public class MyTask extends AsyncTask<Float, Float, String> {
     }// Fim onPreExecute
 
     @Override
-    protected String doInBackground(Float... floats) {
-        for (int i = 1; i < floats.length; i++) {
-            publishProgress((floats[i] * 100) / floats.length);
+    protected String doInBackground(ArrayList<Float>... floats) {
+        ArrayList<Float> teste = floats[0];
+
+        for (int i = 1; i < 10; i++)
+        {
+
+            publishProgress((teste.get(i) * 100) / teste.size());
             if (isCancelled()) {
                 break;
             }
